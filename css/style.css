@@ -3,106 +3,127 @@
     bottom: 40px;
     height: 25px;
 }
-nav ul{
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    font-size: 25px;
+a{
+    text-decoration: none;
+    color: #fff;
+}
+.navbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
     background-color: #666ec1;
-}
-
-nav ul li{
-    float: left;
-}
-
-nav ul li a, .savorybtn, .sweetbtn{
-    display: inline-block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-nav ul li a:hover, .savory_pierogi:hover .savorybtn, .sweetbtn:hover .sweetbtn{
-    background-color: #2d0ae2;
+    color: #fff;
     border-radius: 12px;
 }
-
-nav ul li.savory_pierogi, nav ul li.sweet_pierogi{
-    display: inline-block;
-}
-
-.savory_content, .sweet_content{
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-    border-radius: 12px;
-}
-
-.savory_content a, .sweet_content a{
+.nav_links a{
     color: black;
-    padding: 12px 16px;
-    text-decoration: none;
+}
+.logo{
+    font-size: 32px;
+}
+.menu{
+    display: flex;
+    gap: 1em;
+    font-size: 18px;
+}
+.menu li:hover{
+    background-color: #61a36b;
+    border-radius: 5px;
+    transition: 0.3s ease;
+}
+.menu li{
+    padding: 5px 14px;
+}
+.savory_pierogi, .sweet_pierogi{
+    position: relative;
+}
+.savory_dropdown, .sweet_dropdown{
+    background-color: white;
+    padding: 1em, 0;
+    position: absolute;
+    display: none;
+    border-radius: 8px;
+    top: 40px;
+    border: solid 2px black;
+}
+.savory_dropdown li + li, .sweet_dropdown li + li{
+    margin-top: 10px;
+}
+.savory_dropdown li, .sweet_dropdown li{
+    padding: 0.5em 1em;
+    width: 8em;
+    text-align: center;
+    color: black;
+}
+.savory_dropdown li:hover, .sweet_dropdown li:hover{
+    background-color: #52b7e2;
+}
+.savory_pierogi:hover .savory_dropdown, .sweet_pierogi:hover .sweet_dropdown{
     display: block;
-    text-align: left;
-    border-radius: 12px;
 }
-
-.savory_content a:hover, .sweet_content a:hover{
-    background-color: #e23558;
+input[type=checkbox]{
+    display: none;
 }
-
-.savory_pierogi:hover .savory_content, .sweet_pierogi:hover .sweet_content{
-    display: block;
+.hamburger{
+    display:none;
+    font-size: 24px;
+    user-select: none;
 }
-
+/*mobile navigation*/
+@media screen and (max-width: 768px){
+    .menu{
+        display:none;
+        position:absolute;
+        background-color: #666ec1;
+        right:0;
+        left:0;
+        text-align: center;
+        padding: 16px 0;
+    }
+    .menu li:hover{
+        display: inline-block;
+        background-color: #61a36b;
+        transition: 0.3s ease;
+    }
+    .menu li + li{
+        margin-top: 12px;
+    }
+    input[type=checkbox]:checked ~ .menu{
+        display: block;
+    }
+    .hamburger{
+        display:block;
+    }
+    .savory_dropdown, .sweet_dropdown{
+        left: 10%;
+        top: 10px;
+        position: relative;
+    }
+    .savory_dropdown li:hover, .sweet_dropdown li:hover{
+        background-color: #52b7e2;
+    }
+}
 h1{
-    font-size: 50px;
-    margin: 10px;
-}
-h2{
     font-size: 40px;
     text-align: center;
-    margin: 10px;
+}
+h2{
+    font-size: 30px;
+    text-align: center;
 }
 h3{
-    font-size: 35px;
-    margin: 10px;
+    font-size: 25px;
+    text-align: center;
+
 }
 h4{
-    font-size: 25px;
-    margin: 10px;
-}
-
-header h1{
-    background-color: white;
-}
-nav ul{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    border-radius: 12px;
+    font-size: 20px;
 }
 body{
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-weight: bold;
-    /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
     margin: auto;
-    width: 50%;
-    padding: 10px;
-    background-image: url("../images/pierogi_background.jpg"), url("../images/pierogi_background2.jpg");
-    background-position: left, right;
-    background-repeat: repeat-y;
-    background-size: 600px;
-    /* text-align: center; */
-}
-body header{
-    text-align: center;
-    width: 100%;
 }
 /* Savory Pierogi Styling*/
 #pierogi_ruskie, #mush_cab_pierogi, #meat_pierogi, #cheese_pierogi, #potato_pierogi{
@@ -110,6 +131,8 @@ body header{
     border-radius: 12px;
     margin: 6px;
     padding: 6px;
+    display: flex;
+    flex-direction: column;
 }
 #mush_cab_pierogi{
     background-color: #1d7dc6;
@@ -120,51 +143,29 @@ body header{
 #potato_pierogi{
     background-color: #f0038e;
 }
-.ruskie_metadata, #mcp_metadata, #meatp_metadata, #cp_metadata, #potp_metadata{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 2fr;
-    /* border: 30px, double, #4137e2; */
-}
-.ruskie_metadata h2, #mcp_metadata h2, #meatp_metadata h2, #cp_metadata h2, #potp_metadata h2{
-    grid-column: 1/ -1;
-    grid-row: 1;
+#pierogi_ruskie h2, #mush_cab_pierogi h2, #meat_pierogi h2, #cheese_pierogi h2, #potato_pierogi h2{
     text-align: center;
 }
 .ruskie_metadata  ul, #mcp_metadata ul, #meatp_metadata ul, #cp_metadata ul, #potp_metadata ul{
-    grid-column: 1/ -1;
-    grid-row: 2;
     text-align: center;
-    padding: 0px;
+    padding: 6px;
+}
+.ruskie_metadata, #mcp_metadata, #meatp_metadata, #cp_metadata, #potp_metadata{
+    border: solid 2px;
+    border-radius: 12px;
 }
 #ruskie_ingredients, #mcp_ingredients, #meatp_ingredients, #cheesep_ingredients, #potp_ingredients{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 2fr;
     text-align: center;
-    margin: 5px;
+    border: solid 2px;
+    border-radius: 12px;
+    padding: 6px;
+    margin: 3px;
 }
-#ruskie_ingredients h3, #mcp_ingredients h3, #meatp_ingredients h3, #cheesep_ingredients h3, #potp_ingredients h3{
-    grid-column: 2/ 4;
-    grid-row: 1;
-}
-#r_dough, #mcp_dough2, #meat_dough2, #cp_dough2, #potp_dough2{
-    grid-column: 1/3;
-    grid-row: 3;
-}
-#r_filling, #mcp_filling2, #meat_filling2, #cp_filling2, #potp_filling2{
-    grid-column: 3/5;
-    grid-row: 3;
-}
-#ruskie_dough, #mcp_dough, #meat_dough, #cp_dough, #potp_dough{
-    grid-column: 1/3;
-    grid-row: 2;
-    text-align: center;
-}
-#ruskie_filling, #mcp_filling, #meat_filling, #cp_filling, #potp_filling{
-    grid-column: 3/5;
-    grid-row: 2;
-    text-align: center;
+#ruskie_steps, #mcp_steps, #meatp_steps, #cheesep_steps, #potp_steps{
+    border: solid 2px;
+    border-radius: 12px;
+    padding: 6px;
+    margin: 3px;
 }
 #ruskie_steps ol, #mcp_steps ol, #meatp_steps ol, #cheesep_steps ol, #potp_steps ol{
     list-style-type: decimal;
@@ -173,7 +174,6 @@ body header{
 #ruskie_steps ol li, #mcp_steps ol li, #meatp_steps ol li, #cheesep_steps ol li, #potp_steps ol li{
     padding: 5px;
 }
-
 /* Sweet Pierogi Styling */
 #bb_pierogi{
     background-color: #1d7dc6;
@@ -191,51 +191,29 @@ body header{
     border-radius: 12px;
     margin: 6px;
     padding: 6px;
-}
-#bbp_metadata, #prup_metadata, #ap_metadata, #swqp_metadata{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 2fr;
-}
-#bbp_metadata h2, #prup_metadata h2, #ap_metadata h2, #swqp_metadata h2{
-    grid-column: 1/ -1;
-    grid-row: 1;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
 }
 #bbp_metadata ul, #prup_metadata ul, #ap_metadata ul, #swqp_metadata ul{
-    grid-column: 1/ -1;
-    grid-row: 2;
     text-align: center;
-    padding: 0px;
+    padding: 6px;
+}
+#bbp_metadata, #prup_metadata, #ap_metadata, #swqp_metadata{
+border: solid 2px;
+border-radius: 12px;
 }
 #bbp_ingredients, #prup_ingredients, #ap_ingredients, #swqp_ingredients{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 2fr;
     text-align: center;
-    margin: 5px;
+    border: solid 2px;
+    border-radius: 12px;
+    padding: 6px;
+    margin: 3px;
 }
-#bbp_ingredients h3, #prup_ingredients h3, #ap_ingredients h3, #swqp_ingredients h3{
-    grid-column: 2/ 4;
-    grid-row: 1;
-}
-#bbp_dough2, #prup_dough2, #ap_dough2, #swqp_dough2{
-    grid-column: 1/3;
-    grid-row: 3;
-}
-#bbp_filling2, #prup_filling2, #ap_filling2, #swqp_filling2{
-    grid-column: 3/5;
-    grid-row: 3;
-}
-#bbp_dough, #prup_dough, #ap_dough, #swqp_dough{
-    grid-column: 1/3;
-    grid-row: 2;
-    text-align: center;
-}
-#bbp_filling, #prup_filling, #ap_filling, #swqp_filling{
-    grid-column: 3/5;
-    grid-row: 2;
-    text-align: center;
+#bbp_steps, #prup_steps, #ap_steps, #swqp_steps{
+    border: solid 2px;
+    border-radius: 12px;
+    padding: 6px;
+    margin: 3px;
 }
 #bbp_steps ol, #prup_steps ol, #ap_steps ol, #swqp_steps ol{
     list-style-type: decimal;
@@ -243,4 +221,244 @@ body header{
 }
 #bbp_steps ol li, #prup_steps ol li, #ap_steps ol li, #swqp_steps ol li{
     padding: 5px;
+}
+@media screen and (min-width: 850px){
+    /* nav ul{
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        font-size: 25px;
+        background-color: #666ec1;
+    }
+
+    nav ul li{
+        float: left;
+    }
+
+    nav ul li a, .savorybtn, .sweetbtn{
+        display: inline-block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+    nav ul li a:hover, .savory_pierogi:hover .savorybtn, .sweetbtn:hover .sweetbtn{
+        background-color: #2d0ae2;
+        border-radius: 12px;
+    }
+
+    nav ul li.savory_pierogi, nav ul li.sweet_pierogi{
+        display: inline-block;
+    }
+
+    .savory_content, .sweet_content{
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+        border-radius: 12px;
+    }
+
+    .savory_content a, .sweet_content a{
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+        border-radius: 12px;
+    }
+
+    .savory_content a:hover, .sweet_content a:hover{
+        background-color: #e23558;
+    }
+
+    .savory_pierogi:hover .savory_content, .sweet_pierogi:hover .sweet_content{
+        display: block;
+    } */
+
+    h1{
+        font-size: 50px;
+        margin: 10px;
+    }
+    h2{
+        font-size: 40px;
+        text-align: center;
+        margin: 10px;
+    }
+    h3{
+        font-size: 35px;
+        margin: 10px;
+    }
+    h4{
+        font-size: 25px;
+        margin: 10px;
+    }
+
+    header h1{
+        background-color: white;
+    }
+    /* nav ul{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        border-radius: 12px;
+    } */
+    body{
+        margin: auto;
+        width: 50%;
+        padding: 10px;
+        background-image: url("../images/pierogi_background.jpg"), url("../images/pierogi_background2.jpg");
+        background-position: left, right;
+        background-repeat: repeat-y;
+        background-size: 600px;
+        /* text-align: center; */
+    }
+    body header{
+        text-align: center;
+        width: 100%;
+    }
+    /* Savory Pierogi Styling*/
+    #pierogi_ruskie, #mush_cab_pierogi, #meat_pierogi, #cheese_pierogi, #potato_pierogi{
+        background-color: #04a84b;
+        border-radius: 12px;
+        margin: 6px;
+        padding: 6px;
+    }
+    #mush_cab_pierogi{
+        background-color: #1d7dc6;
+    }
+    #meat_pierogi{
+        background-color: #ee203f;
+    }
+    #potato_pierogi{
+        background-color: #f0038e;
+    }
+    .ruskie_metadata, #mcp_metadata, #meatp_metadata, #cp_metadata, #potp_metadata{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 2fr;
+        /* border: 30px, double, #4137e2; */
+    }
+    .ruskie_metadata h2, #mcp_metadata h2, #meatp_metadata h2, #cp_metadata h2, #potp_metadata h2{
+        grid-column: 1/ -1;
+        grid-row: 1;
+        text-align: center;
+    }
+    .ruskie_metadata  ul, #mcp_metadata ul, #meatp_metadata ul, #cp_metadata ul, #potp_metadata ul{
+        grid-column: 1/ -1;
+        grid-row: 2;
+        text-align: center;
+        padding: 0px;
+    }
+    #ruskie_ingredients, #mcp_ingredients, #meatp_ingredients, #cheesep_ingredients, #potp_ingredients{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 2fr;
+        text-align: center;
+        margin: 5px;
+    }
+    #ruskie_ingredients h3, #mcp_ingredients h3, #meatp_ingredients h3, #cheesep_ingredients h3, #potp_ingredients h3{
+        grid-column: 2/ 4;
+        grid-row: 1;
+    }
+    #r_dough, #mcp_dough2, #meat_dough2, #cp_dough2, #potp_dough2{
+        grid-column: 1/3;
+        grid-row: 3;
+    }
+    #r_filling, #mcp_filling2, #meat_filling2, #cp_filling2, #potp_filling2{
+        grid-column: 3/5;
+        grid-row: 3;
+    }
+    #ruskie_dough, #mcp_dough, #meat_dough, #cp_dough, #potp_dough{
+        grid-column: 1/3;
+        grid-row: 2;
+        text-align: center;
+    }
+    #ruskie_filling, #mcp_filling, #meat_filling, #cp_filling, #potp_filling{
+        grid-column: 3/5;
+        grid-row: 2;
+        text-align: center;
+    }
+    #ruskie_steps ol, #mcp_steps ol, #meatp_steps ol, #cheesep_steps ol, #potp_steps ol{
+        list-style-type: decimal;
+        list-style-position: inside;
+    }
+    #ruskie_steps ol li, #mcp_steps ol li, #meatp_steps ol li, #cheesep_steps ol li, #potp_steps ol li{
+        padding: 5px;
+    }
+
+    /* Sweet Pierogi Styling */
+    #bb_pierogi{
+        background-color: #1d7dc6;
+    }
+    #prune_pierogi{
+        background-color: #04a84b;
+    }
+    #apple_pierogi{
+        background: #ee203f;
+    }
+    #sweetquark_pierogi{
+        background-color: #f0038e;
+    }
+    #bb_pierogi, #prune_pierogi, #apple_pierogi, #sweetquark_pierogi{
+        border-radius: 12px;
+        margin: 6px;
+        padding: 6px;
+    }
+    #bbp_metadata, #prup_metadata, #ap_metadata, #swqp_metadata{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 2fr;
+    }
+    #bbp_metadata h2, #prup_metadata h2, #ap_metadata h2, #swqp_metadata h2{
+        grid-column: 1/ -1;
+        grid-row: 1;
+        text-align: center;
+    }
+    #bbp_metadata ul, #prup_metadata ul, #ap_metadata ul, #swqp_metadata ul{
+        grid-column: 1/ -1;
+        grid-row: 2;
+        text-align: center;
+        padding: 0px;
+    }
+    #bbp_ingredients, #prup_ingredients, #ap_ingredients, #swqp_ingredients{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 2fr;
+        text-align: center;
+        margin: 5px;
+    }
+    #bbp_ingredients h3, #prup_ingredients h3, #ap_ingredients h3, #swqp_ingredients h3{
+        grid-column: 2/ 4;
+        grid-row: 1;
+    }
+    #bbp_dough2, #prup_dough2, #ap_dough2, #swqp_dough2{
+        grid-column: 1/3;
+        grid-row: 3;
+    }
+    #bbp_filling2, #prup_filling2, #ap_filling2, #swqp_filling2{
+        grid-column: 3/5;
+        grid-row: 3;
+    }
+    #bbp_dough, #prup_dough, #ap_dough, #swqp_dough{
+        grid-column: 1/3;
+        grid-row: 2;
+        text-align: center;
+    }
+    #bbp_filling, #prup_filling, #ap_filling, #swqp_filling{
+        grid-column: 3/5;
+        grid-row: 2;
+        text-align: center;
+    }
+    #bbp_steps ol, #prup_steps ol, #ap_steps ol, #swqp_steps ol{
+        list-style-type: decimal;
+        list-style-position: inside;
+    }
+    #bbp_steps ol li, #prup_steps ol li, #ap_steps ol li, #swqp_steps ol li{
+        padding: 5px;
+    }
 }
