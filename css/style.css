@@ -2,39 +2,46 @@
     position: relative;
     bottom: 40px;
     height: 25px;
+    background-color: black;
 }
+
 a{
     text-decoration: none;
     color: #fff;
 }
 .navbar{
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     padding: 20px;
     background-color: #666ec1;
     color: #fff;
     border-radius: 12px;
 }
-.nav_links a{
-    color: black;
-}
-.logo{
-    font-size: 32px;
-}
-.menu{
+.nav_links{
     display: flex;
-    gap: 1em;
+    flex-direction: row;
     font-size: 18px;
 }
-.menu li:hover{
+.nav_links a{
+    color: black;
+    justify-content: flex-end;
+}
+.nav_links li:hover{
     background-color: #61a36b;
     border-radius: 5px;
     transition: 0.3s ease;
 }
-.menu li{
+.nav_links li{
     padding: 5px 14px;
 }
+.logo{
+    font-size: 32px;
+    justify-content: flex-start;
+}
+
 .savory_pierogi, .sweet_pierogi{
     position: relative;
 }
@@ -44,7 +51,7 @@ a{
     position: absolute;
     display: none;
     border-radius: 8px;
-    top: 40px;
+    top: 25px;
     border: solid 2px black;
 }
 .savory_dropdown li + li, .sweet_dropdown li + li{
@@ -125,6 +132,42 @@ body{
     font-weight: bold;
     margin: auto;
 }
+/*homepage styling*/
+.main_home{
+    border: solid 2px #666ec1;
+    border-radius: 12px;
+    padding: 6px;
+    display: grid;
+    grid-template-rows: 2fr, 1fr, 4fr, 2fr, 1fr, 3fr;
+    justify-items: center;
+
+}
+p{
+    padding: 6px;
+    font-size: 18px;
+}
+.main_home h1{
+    font-size: 35px;
+    grid-row: 1;
+}
+.img1{
+    grid-row: 2;
+    max-width: 100px;
+    max-height: 100px;
+}
+.img3{
+    grid-row: 4;
+    max-width: 100px;
+    max-height: 100px;
+}
+.fun_fact_head{
+    font-size: 30px;
+    grid-row: 3;
+}
+.fun_fact{
+    grid-row: 5;
+}
+
 /* Savory Pierogi Styling*/
 #pierogi_ruskie, #mush_cab_pierogi, #meat_pierogi, #cheese_pierogi, #potato_pierogi{
     background-color: #04a84b;
@@ -320,6 +363,53 @@ border-radius: 12px;
     body header{
         text-align: center;
         width: 100%;
+    }
+    /*Home Page Styling*/
+    .main_home{
+        display: grid;
+        grid-template-columns: 1fr 6fr;
+        grid-template-rows: 1fr 2fr 1fr 1fr;
+        align-items: center;
+    }
+
+    .main_home h1{
+        font-size: 35px;
+        grid-column: 1/-1;
+        grid-row: 1;
+    }
+
+    .img1{
+        grid-column: 1;
+        grid-row: 2;
+        max-width: 100px;
+        max-height: 100px;
+    }
+    .img2{
+        grid-column: 1;
+        grid-row: 5;
+        max-width: 100px;
+        max-height: 100px;
+        border: solid 2px black;
+    }
+    .img3{
+        grid-column: 1;
+        grid-row: 4;
+        max-width: 100px;
+        max-height: 100px;
+    }
+    #into{
+        grid-column: 2;
+        grid-row: 2;
+    }
+    .fun_fact_head{
+        font-size: 30px;
+        grid-column: 1/ -1;
+        grid-row: 3;
+        padding-top: 6px;
+    }
+    .fun_fact{
+        grid-row: 4;
+        grid-column: 2;
     }
     /* Savory Pierogi Styling*/
     #pierogi_ruskie, #mush_cab_pierogi, #meat_pierogi, #cheese_pierogi, #potato_pierogi{
